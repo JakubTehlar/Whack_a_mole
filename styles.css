@@ -87,7 +87,7 @@ button:hover::after {
     grid-template-columns: repeat(3, 150px);
     grid-gap: 10px;
     margin-top: 20px;
-    justify-content: center; /* Centering the holes horizontally */
+    justify-content: center; 
 }
 
 .hole {
@@ -111,7 +111,7 @@ button:hover::after {
 
 .mole {
     position: absolute;
-    bottom: -150px; /* Start hidden */
+    bottom: -150px; 
     transform: translateX(-50%);
     -webkit-transform: translateX(-50%);
     -moz-transform: translateX(-50%);
