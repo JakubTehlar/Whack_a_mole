@@ -420,15 +420,12 @@ class Game {
     endGame(restart = false) {
         clearInterval(this.timer);
         clearInterval(this.gameInterval);
-
-        // Show message
-        this.showPlayerMessage();
-
-
         // Turn off music and sound effects
         this.bgMusic.pause();
         this.timerTickSound.pause();
-        
+
+        // Show message
+        this.showPlayerMessage();
         if (!restart) {
             alert(`Game Over! Your score is ${this.score}`);
         }
