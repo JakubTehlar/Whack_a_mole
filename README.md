@@ -35,7 +35,7 @@ The semestral project for [B0B39KAJ](https://cw.fel.cvut.cz/wiki/courses/b0b39ka
    - Click the "Start Game" button to begin. The game section will be displayed, and the timer will start counting down. When you reach the time limit, the game ends and you need to manually restart it to start playing again.
 
 4. **Whack the Moles**:
-   - Click on the moles as they appear to whack them and increase your score.
+   - Click on the moles as they appear to whack them and increase your score. The goal is to be better than the last time.
 
 
 
