@@ -22,7 +22,7 @@ The semestral project for [B0B39KAJ](https://cw.fel.cvut.cz/wiki/courses/b0b39ka
 - **Pause/Resume**: Click the Pause/Resume button to pause or resume the game.
 - **Restart**: Click the Restart button to restart the game.
 - **Volume Control**: Use the volume slider to adjust the background music volume.
-- **Pause/Music Music**: Click the Pause Music button if the background music is bothering you.
+- **Pause/Play Music**: Click the Pause Music button if the background music is bothering you.
 
 ## How to Play
 1. **Enter Your Name**:
