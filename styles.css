@@ -178,6 +178,7 @@ button:hover::after {
 }
 
 /* Bod - Media Queries */
+/* tablet */
 @media (max-width: 768px) {
     .game {
         grid-template-columns: repeat(2, 100px);
@@ -197,6 +198,7 @@ button:hover::after {
     }
 }
 
+/* mobil */
 @media (max-width: 480px) {
     body {
         padding: 0 10px;
