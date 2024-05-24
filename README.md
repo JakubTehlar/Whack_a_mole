@@ -9,8 +9,6 @@ The semestral project for [B0B39KAJ](https://cw.fel.cvut.cz/wiki/courses/b0b39ka
 - [Features](#features)
 - [Controls](#controls)
 - [How to Play](#how-to-play)
-- [Cloning the repository](#cloning-the-repository)
-- [Credits](#credits)
 
 ## Features
 - **Multiple Difficulty Levels**: Choose from Easy, Medium, or Hard. The easy difficulty is set by default.
@@ -39,12 +37,7 @@ The semestral project for [B0B39KAJ](https://cw.fel.cvut.cz/wiki/courses/b0b39ka
 4. **Whack the Moles**:
    - Click on the moles as they appear to whack them and increase your score.
 
-   
-## Cloning the repository
-... To be added ...
 
-## Credits
-... To be added ...
 
 
 
