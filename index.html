@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css">
+    <title>Whack a Mole!</title>
+</head>
+
+<body>
+    <header>
+        <h1>Whack as many moles as you see!</h1>
+    </header>
+
+    <main id="mainContainer">
+        <section id="nameSection">
+
+            <div class="name">
+
+                <!-- Bod - Formularove prvky -->
+                <form id="nameForm">
+                    <label for="playerName">Player Name:</label>
+                    <input type="text" placeholder="Enter your name" id="playerName" name="playerName" required>
+                </form>
+            </div>
+
+            <div class="diffSelection">
+                <label for="difficultySelect">Select Difficulty Level:</label>
+                <select id="difficultySelect">
+                    <option value="easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
+                </select>
+            </div>
+
+            <div class="btn">
+                <button id="submitBtn" type="submit">Start Game</button>
+            </div>
+
+            <div id="map"></div>
+
+        </section>
+
+        <section id="gameSection" style="display: none;">
+
+            <div class="game-info">
+                <div class="scoreboard>
+                    <h3>Scoreboard</h3>
+                    <ul id="scoreboard">
+                     <p>Score: <span class="score">0</span></p>
+                    </ul>
+                </div>
+                
+                <div id="timer">
+                    <ul id="timeboard">
+                        <p>Time Left: <span id="timeLeft">10</span> <span id="timeLeftUnit">s</span></p>
+                    </ul>
+                </div>
+
+                <div class="playerNameDiv">
+                    <h3><span id="messageToPlayer"></span> <span id="playerNameDisplay"></span></h3>
+                </div>
+            </div> 
+
+            <div class="game">
+                <div class="hole"><div class="mole"></div></div>
+                <div class="hole"><div class="mole"></div></div>
+                <div class="hole"><div class="mole"></div></div>
+                <div class="hole"><div class="mole"></div></div>
+                <div class="hole"><div class="mole"></div></div>
+                <div class="hole"><div class="mole"></div></div>
+                <div class="hole"><div class="mole"></div></div>
+                <div class="hole"><div class="mole"></div></div>
+                <div class="hole"><div class="mole"></div></div>
+            </div>
+
+            <div class="gameControls">
+                <button id="pauseResumeButton" data-label="Pause / Resume Game">
+                    
+                    <!-- Bod Grafika / SVG -->
+                    <svg id="pauseIcon" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-pause-btn-fill" viewBox="0 0 16 16" style="display:none;">
+                        <path d="M0 12V4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2m6.25-7C5.56 5 5 5.56 5 6.25v3.5a1.25 1.25 0 1 0 2.5 0v-3.5C7.5 5.56 6.94 5 6.25 5m3.5 0c-.69 0-1.25.56-1.25 1.25v3.5a1.25 1.25 0 1 0 2.5 0v-3.5C11 5.56 10.44 5 9.75 5"/>
+                    </svg>
+                    <svg id="playIcon" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-play-btn-fill" viewBox="0 0 16 16">
+                        <path d="M0 12V4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2m6.79-6.907A.5.5 0 0 0 6 5.5v5a.5.5 0 0 0 .79.407l3.5-2.5a.5.5 0 0 0 0-.814z"/>
+                    </svg>
+                </button>
+
+                <button id="restartButton" data-label="Restart Game">
+                    <svg id="restartIcon" xmlns="http://www.w3.org/2000/svg" width="25" height="25 fill="currentColor" class="bi bi-arrow-repeat" viewBox="0 0 16 16">
+                        <path d="M11.534 7h3.932a.25.25 0 0 1 .192.41l-1.966 2.36a.25.25 0 0 1-.384 0l-1.966-2.36a.25.25 0 0 1 .192-.41m-11 2h3.932a.25.25 0 0 0 .192-.41L2.692 6.23a.25.25 0 0 0-.384 0L.342 8.59A.25.25 0 0 0 .534 9"/>
+                        <path fill-rule="evenodd" d="M8 3c-1.552 0-2.94.707-3.857 1.818a.5.5 0 1 1-.771-.636A6.002 6.002 0 0 1 13.917 7H12.9A5 5 0 0 0 8 3M3.1 9a5.002 5.002 0 0 0 8.757 2.182.5.5 0 1 1 .771.636A6.002 6.002 0 0 1 2.083 9z"/>
+                    </svg>
+                </button>
+                <button id="pauseMusicButton">Pause Music</button>
+            </div>
+            <div class="volumeControls">
+                <input type="range" id="volumeControl" min="0" max="1" step="0.1" value="0.5">
+                <svg id="midVolumeIcon" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-volume-down-fill" viewBox="0 0 16 16">
+                    <path d="M9 4a.5.5 0 0 0-.812-.39L5.825 5.5H3.5A.5.5 0 0 0 3 6v4a.5.5 0 0 0 .5.5h2.325l2.363 1.89A.5.5 0 0 0 9 12zm3.025 4a4.5 4.5 0 0 1-1.318 3.182L10 10.475A3.5 3.5 0 0 0 11.025 8 3.5 3.5 0 0 0 10 5.525l.707-.707A4.5 4.5 0 0 1 12.025 8"/>
+                  </svg>
+
+                  <svg id="muteVolumeIcon" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-volume-mute-fill" viewBox="0 0 16 16">
+                    <path d="M6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06m7.137 2.096a.5.5 0 0 1 0 .708L12.207 8l1.647 1.646a.5.5 0 0 1-.708.708L11.5 8.707l-1.646 1.647a.5.5 0 0 1-.708-.708L10.793 8 9.146 6.354a.5.5 0 1 1 .708-.708L11.5 7.293l1.646-1.647a.5.5 0 0 1 .708 0"/>
+                  </svg>
+
+                  <svg id = "maxVolumeIcon" xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-volume-up-fill" viewBox="0 0 16 16">
+                    <path d="M11.536 14.01A8.47 8.47 0 0 0 14.026 8a8.47 8.47 0 0 0-2.49-6.01l-.708.707A7.48 7.48 0 0 1 13.025 8c0 2.071-.84 3.946-2.197 5.303z"/>
+                    <path d="M10.121 12.596A6.48 6.48 0 0 0 12.025 8a6.48 6.48 0 0 0-1.904-4.596l-.707.707A5.48 5.48 0 0 1 11.025 8a5.48 5.48 0 0 1-1.61 3.89z"/>
+                    <path d="M8.707 11.182A4.5 4.5 0 0 0 10.025 8a4.5 4.5 0 0 0-1.318-3.182L8 5.525A3.5 3.5 0 0 1 9.025 8 3.5 3.5 0 0 1 8 10.475zM6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06"/>
+                  </svg>
+            </div>
+
+            <!-- Bod Media - Audio -->
+            <audio id="bgMusic1" src="sounds/bounce_bgr.mp3" loop></audio>
+            <audio id="whackSound" src="sounds/mole_whack_sound.mp3"></audio>
+            <audio id="timerTickSound" src="sounds/timer_tick.mp3"></audio>
+        </section>
+    </main>
+
+    <footer>
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        <script src="script.js"></script>
+    </footer>
+</body>
+
+</html>
