@@ -232,6 +232,7 @@ class Game {
             this.timeLeft--;
             this.timeLeftDisplay.textContent = this.timeLeft;
             if (this.timeLeft < 0) {
+                alert(`Game Over! Your score is ${this.score}`);
                 this.endGame();
             }
             if (this.timeLeft <= timeLimit * 0.25 && this.timeLeft > 0) {
@@ -426,7 +427,6 @@ class Game {
         this.bgMusic.pause();
         this.timerTickSound.pause();
 
-        alert(`Game Over! Your score is ${this.score}`);
         this.gameStarted = false;
         this.timeLeftDisplay.textContent = 0;
         this.timerElement.display = "none";
