@@ -365,6 +365,7 @@ class Game {
             this.maxVolumeIcon.style.display = "inline";
         }
     }
+    
     /** 
     * Toggle the background music if the user clicked the pause music button. If the background music is paused, play the music, set the volume icon, and change the pause music button text to "Pause Music". Otherwise, pause the music, set the volume icon, and change the pause music button text to "Play Music". 
     */
@@ -423,13 +424,14 @@ class Game {
         // Show message
         this.showPlayerMessage();
 
-        if (!restart) {
-            alert(`Game Over! Your score is ${this.score}`);
-        }
 
         // Turn off music and sound effects
         this.bgMusic.pause();
         this.timerTickSound.pause();
+        
+        if (!restart) {
+            alert(`Game Over! Your score is ${this.score}`);
+        }
 
         this.gameStarted = false;
         this.timeLeftDisplay.textContent = 0;
