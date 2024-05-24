@@ -439,7 +439,7 @@ class Game {
         // remove text effects
         this.timeLeftDisplay.style.color = "black";
 
-        // Cannot whack moles after game over
+        // Cannot whack moles after the game is over
         // Remove all spawned moles
         this.holes.forEach(hole => {
             const mole = hole.querySelector('.mole');
