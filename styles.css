@@ -76,10 +76,11 @@ button:hover::after {
 }
 
 /* Bod - pokrocile selektory */
-.score, #timer {
+.score, #timeLeft {
     font-size: 20px;
     margin: 10px 0;
 }
+
 
 .game {
     display: grid;
