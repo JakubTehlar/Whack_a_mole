@@ -232,7 +232,6 @@ class Game {
             this.timeLeft--;
             this.timeLeftDisplay.textContent = this.timeLeft;
             if (this.timeLeft < 0) {
-                alert(`Game Over! Your score is ${this.score}`);
                 this.endGame();
             }
             if (this.timeLeft <= timeLimit * 0.25 && this.timeLeft > 0) {
@@ -409,19 +408,24 @@ class Game {
         }
         // clearInterval(this.timer);
         // clearInterval(this.gameInterval);
-        this.endGame();
+        this.endGame(true);
         this.setGameLogic();
     }
 
     /** 
     * End the game by clearing the timer and game interval and despawning all moles. Show the player message and the score. Turn off the music and sound effects.  
+    * @param {boolean} [restart=false] - The restart flag to determine if the game is restarted.
     */
-    endGame() {
+    endGame(restart = false) {
         clearInterval(this.timer);
         clearInterval(this.gameInterval);
 
         // Show message
         this.showPlayerMessage();
+
+        if (!restart) {
+            alert(`Game Over! Your score is ${this.score}`);
+        }
 
         // Turn off music and sound effects
         this.bgMusic.pause();
