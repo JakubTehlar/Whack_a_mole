@@ -3,7 +3,7 @@
 # Whack a mole game 
 ## Description
 This is a basic Whack a Mole javascript single page application. The purpose of the game is to whack as many moles as possible within a given time limit at certain difficulty level. The application provides interactive features such as player messaging, a scoreboard, sound effects,  and a map showing the player's location.
-The semestral project for [B0B39KAJ](https://cw.fel.cvut.cz/wiki/courses/b0b39kaj/start) course.
+The semestral project for [B0B39KAJ](https://cw.fel.cvut.cz/wiki/courses/b0b39kaj/start) course. Demo available at https://jakubtehlar.github.io/Whack_a_mole/
 
 ## Table of Contents
 - [Features](#features)
